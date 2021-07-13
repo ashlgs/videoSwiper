@@ -1,0 +1,69 @@
+.container {
+  width: 100%;
+  height: 100%
+}
+
+.video-swiper {
+  width: 100%;
+  height: 100%
+}
+
+.video_item {
+  height: 100%;
+  width: 100%
+}
+
+.video {
+  width: 100vw;
+  height: 100vh;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 82rpx;
+  height: 84rpx;
+  margin: auto;
+  z-index: 5;
+}
+
+.color-view {
+  position: fixed;
+  left: 0;
+  top: 0;
+  color: aqua;
+}
+
+.fn-view {
+  position: fixed;
+  width: 100rpx;
+  height: 400rpx;
+  bottom: 100rpx;
+  right: 30rpx;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.comment-area-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  bottom: 0rpx;
+  background-color: transparent;
+}
+
+.comment-area {
+  position: fixed;
+  width: 100%;
+  height: 600rpx;
+  bottom: 0rpx;
+  background-color: pink;
+  /* transition: all ease 2s; */
+}
+
