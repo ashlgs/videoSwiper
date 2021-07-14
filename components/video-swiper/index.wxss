@@ -39,16 +39,63 @@
 
 .fn-view {
   position: fixed;
-  width: 100rpx;
-  height: 400rpx;
+  width: 100%;
+  /* height: 200rpx; */
   bottom: 100rpx;
-  right: 30rpx;
-  background-color: green;
+  /* background-color: green; */
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  padding:0 32rpx;
+  box-sizing: border-box;
+}
+
+.author-box {
+  display: flex;
   align-items: center;
 }
+
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin-left: 12rpx;
+}
+
+.author-name {
+  margin-left: 16rpx;
+  color: white;
+  font-size: 36rpx;
+}
+
+.fn-wraper {
+  display: flex;
+}
+
+.fn-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+  width: 90rpx;
+color:white;
+}
+
+.fn-box .icon {
+  width: 48rpx;
+  height: 48rpx;
+  object-fit: contain;
+}
+
+.fn-box .num {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+}
+
 
 .comment-area-box {
   position: fixed;
@@ -66,4 +113,3 @@
   background-color: pink;
   /* transition: all ease 2s; */
 }
-

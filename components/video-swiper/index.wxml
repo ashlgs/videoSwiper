@@ -13,17 +13,42 @@
         src="../../images/home-play.png"></image>
       <view class="color-view">video_{{item.idxKey}}</view>
       <view class="fn-view">
-        <view catchtap="approveClick" data-item="{{item}}">{{item.approve?"已赞":"未赞"}}</view>
-        <view catchtap="commentAreaClick">评论</view>
-        <view>分享</view>
+        <view class="author-box" catchtap="skipPersonalPage">
+          <image class="avatar"
+            src="https://thirdwx.qlogo.cn/mmopen/vi_32/KiayY8cOIWGXPibyVHctqESB9rZc2TG57QXicEEc5wOxs3MQdJ8avhxj5fpcBw169icP0j3VTiaiboZUtNp0DZzCbMbg/132">
+          </image>
+          <view class="author-name"> teacher</view>
+        </view>
+        <view class="fn-wraper">
+          <view class="fn-box">
+            <image class="icon" src="../../images/share.png">
+            </image>
+            <view>0</view>
+          </view>
+
+          <view class="fn-box" catchtap="approveClick" data-item="{{item}}">
+            <image class="icon" src="{{item.approve?'../../images/approved.png':'../../images/approve.png'}}">
+            </image>
+            <view class="num">{{item.approve?"已赞":"未赞"}}</view>
+          </view>
+
+          <view class="fn-box" catchtap="commentAreaClick">
+            <image class="icon" src="../../images/comment.png">
+            </image>
+            <view>0</view>
+          </view>
+
+        </view>
+
       </view>
 
 
     </swiper-item>
   </swiper>
   <view class="comment-area-box" wx:if="{{showComment}}" catchtap="commentAreaClick">
-    <view class="comment-area" wx:if="{{showComment}}"  animation="{{animationData}}" catchtap="noFn">
-    <view catchtap="commentAreaClick">关闭</view>
+    <view class="comment-area" wx:if="{{showComment}}" animation="{{animationData}}" catchtap="noFn">
+      <view catchtap="commentAreaClick">关闭</view>
+
     </view>
   </view>
 </view>

@@ -257,17 +257,17 @@ module.exports =
 
                         },
                         approveClick(e) {
-                            console.log("点赞?::", e.target.dataset.item)
-                            let item = e.target.dataset.item;
+                            console.log("点赞?::", e.currentTarget.dataset.item)
+                            let item = e.currentTarget.dataset.item;
                             let currIndex = item.index;
-                            this.triggerEvent('aaa', {item});
-                            console.log(
-                                item.approve, "currIndex", currIndex
-                            )
-                            console.log("curQueue::::::::::",this.data.curQueue)
+                            this.triggerEvent('aaa', { item });
+                            // console.log(
+                            //     item.approve, "currIndex", currIndex
+                            // )
+                            console.log("curQueue::::::::::", this.data.curQueue)
                             //更改curQueue显示状态到页面
-                            for(let i = 0;i <this.data.curQueue.length;i++){
-                                if(item.id == this.data.curQueue[i].id){
+                            for (let i = 0; i < this.data.curQueue.length; i++) {
+                                if (item.id == this.data.curQueue[i].id) {
                                     this.setData({
                                         ['curQueue[' + i + '].approve']: !item.approve
                                     })
@@ -325,7 +325,11 @@ module.exports =
                                 animationData: this.animation.export(),
                             })
                         },
-
+                        skipPersonalPage(){
+                            wx.navigateTo({
+                              url: '/PersonalPage/PersonalPage',
+                            })
+                        },
 
                         _videoListChanged: function _videoListChanged(newVal) {
                             let _this = this;
@@ -607,6 +611,7 @@ module.exports =
                                 // console.log(curQueue[current], 'id', this.data, current);
                                 // console.log('_change:', this.data._change, '_invalidDown:', this.data._invalidDown, '_invalidUp:', this.data._invalidUp, '_last:', this.data._last)
                             });
+                            console.log("------------------qh",this.data.curQueue)
                         },
                         // 点击播放或暂停
                         clickVideo(e) {
