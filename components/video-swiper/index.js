@@ -244,7 +244,77 @@ module.exports =
                         total: 0,
                         videoBol: [false, false, false, false],
 
-                        showComment: false
+                        showComment: false,
+
+                        commentList: [{
+                            user_profile_image_url: "https://sf3-cdn-tos.toutiaostatic.com/img/user-avatar/f954df011462d514120a9cea5e5b191d~300x300.image",
+                            user_name: "周星星",
+                            user_id: "155",
+                            text: " 周深国际巨星，将要举行世界巡回演唱会！",
+                            reply_count: 1,//回复数
+                            reply_list: [{
+                                create_time: 1626227333,
+                                digg_count: 0,
+                                id: 6984593198236829000,
+                                text: "谁封的巨星，顶多一女高音歌唱家得了",
+                                user_digg: 0,
+                                user_id: 6796763801,
+                                user_name: "泡泡吐槽",
+                                user_profile_image_url: "https://sf3-cdn-tos.toutiaostatic.com/img/user-avatar/a0b274715e933cb73075791f03e94635~300x300.image",
+
+
+                            }],//回复列表
+                            digg_count: 6,//点赞
+                            create_time: "1626237286",
+
+                            id: "0",
+                        },
+                        {
+                            user_profile_image_url: "https://sf3-cdn-tos.toutiaostatic.com/img/user-avatar/f954df011462d514120a9cea5e5b191d~300x300.image",
+                            user_name: "周星星",
+                            user_id: "155",
+                            text: " 周深国际巨星，将要举行世界巡回演唱会！",
+                            reply_count: 1,//回复数
+                            reply_list: [{
+                                create_time: 1626227333,
+                                digg_count: 0,
+                                id: 6984593198236829000,
+                                text: "谁封的巨星，顶多一女高音歌唱家得了",
+                                user_digg: 0,
+                                user_id: 6796763801,
+                                user_name: "泡泡吐槽",
+                                user_profile_image_url: "https://sf3-cdn-tos.toutiaostatic.com/img/user-avatar/a0b274715e933cb73075791f03e94635~300x300.image",
+
+
+                            }],//回复列表
+                            digg_count: 6,//点赞
+                            create_time: "1626237286",
+
+                            id: "0",
+                        }, {
+                            user_profile_image_url: "https://sf3-cdn-tos.toutiaostatic.com/img/user-avatar/f954df011462d514120a9cea5e5b191d~300x300.image",
+                            user_name: "周星星",
+                            user_id: "155",
+                            text: " 周深国际巨星，将要举行世界巡回演唱会！",
+                            reply_count: 1,//回复数
+                            reply_list: [{
+                                create_time: 1626227333,
+                                digg_count: 0,
+                                id: 6984593198236829000,
+                                text: "谁封的巨星，顶多一女高音歌唱家得了",
+                                user_digg: 0,
+                                user_id: 6796763801,
+                                user_name: "泡泡吐槽",
+                                user_profile_image_url: "https://sf3-cdn-tos.toutiaostatic.com/img/user-avatar/a0b274715e933cb73075791f03e94635~300x300.image",
+
+
+                            }],//回复列表
+                            digg_count: 6,//点赞
+                            create_time: "1626237286",
+
+                            id: "0",
+                        }
+                        ]
                     },
                     lifetimes: {
                         attached: function attached() {
@@ -312,6 +382,20 @@ module.exports =
                             }, 200)
 
                         },
+                        commentClicked(e) {
+                            console.log("回复:::::::", e.currentTarget.dataset.item)
+                            this.setData({
+                                replyHolder: '回复 '+e.currentTarget.dataset.item.user_name+"："
+                            })
+
+                        },
+                        replyInput(e) {
+                            this.setData({ replyContent: e.detail.value.replace(/\s+/g, '') });
+
+                        },
+                        send() {
+                            console.log("发送:::::::", this.data.replyContent)
+                        },
                         //动画集
                         fadeIn: function () {
                             this.animation.translateY(0).step()
@@ -325,9 +409,12 @@ module.exports =
                                 animationData: this.animation.export(),
                             })
                         },
-                        skipPersonalPage(){
+                        loadMore() {
+                            console.log("load more....")
+                        },
+                        skipPersonalPage() {
                             wx.navigateTo({
-                              url: '/PersonalPage/PersonalPage',
+                                url: '/PersonalPage/PersonalPage',
                             })
                         },
 
@@ -604,14 +691,16 @@ module.exports =
                             }
                             this.setData({
                                 curQueue: curQueue,
-                                circular: circular
+                                circular: circular,
+
+                                replyHolder:''
                             }, () => {
                                 // console.log('curQueue:', JSON.parse(JSON.stringify(this.data.curQueue)), 'nextQueue:', this.data.nextQueue, 'prevQueue:', this.data.prevQueue)
                                 // console.log(this.data);
                                 // console.log(curQueue[current], 'id', this.data, current);
                                 // console.log('_change:', this.data._change, '_invalidDown:', this.data._invalidDown, '_invalidUp:', this.data._invalidUp, '_last:', this.data._last)
                             });
-                            console.log("------------------qh",this.data.curQueue)
+                            console.log("------------------qh", this.data.curQueue)
                         },
                         // 点击播放或暂停
                         clickVideo(e) {

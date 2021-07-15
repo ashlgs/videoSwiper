@@ -8,7 +8,8 @@ const urls = [
   'http://xywout.oss-cn-hangzhou.aliyuncs.com/2019720094656-arxau3.m3u8',
   'http://xywout.oss-cn-hangzhou.aliyuncs.com/2019720094656-arxau3.m3u8',
   'http://xywout.oss-cn-hangzhou.aliyuncs.com/2019720094656-arxau3.m3u8',
-  'http://xywout.oss-cn-hangzhou.aliyuncs.com/2019720094656-arxau3.m3u8',
+
+
 ]
 
 const videoList = urls.map((url, index) => ({ id: index + 1, url, approve: index % 2 == 0 }))

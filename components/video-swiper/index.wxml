@@ -45,10 +45,46 @@
 
     </swiper-item>
   </swiper>
-  <view class="comment-area-box" wx:if="{{showComment}}" catchtap="commentAreaClick">
+  <view class="comment-area-box" hidden="{{!showComment}}" catchtap="commentAreaClick">
     <view class="comment-area" wx:if="{{showComment}}" animation="{{animationData}}" catchtap="noFn">
-      <view catchtap="commentAreaClick">关闭</view>
+      <view class="comment-close" catchtap="commentAreaClick">关闭</view>
+      <scroll-view style="height:360rpx;" scroll-y="true" bindscrolltolower="loadMore">
+        <div class="comment-item" wx:for="{{commentList}}">
+          <div class="comment-item-top">
+            <div class="comment-item-top-avatar">
+              <image src="{{item.user_profile_image_url}}"></image>
+            </div>
+            <div class="comment-item-top-user">
+              <div class="comment-item-top-user-name">{{item.user_name}}</div>
+            </div>
+            <div class="comment-item-top-digg">{{item.digg_count}}</div>
+          </div>
+          <div class="comment-item-text" catchtap="commentClicked" data-item="{{item}}">{{item.text}}</div>
+          <div class="comment-item-info"><span class="comment-item-info-reply">{{item.reply_count}}回复</span>2小时前</div>
 
+          <view class="reply-item" wx:for="{{item.reply_list}}">
+            <div class="comment-item-top">
+              <div class="comment-item-top-avatar">
+                <image src="{{item.user_profile_image_url}}"></image>
+              </div>
+              <div class="comment-item-top-user">
+                <div class="comment-item-top-user-name">{{item.user_name}}</div>
+              </div>
+              <div class="comment-item-top-digg">{{item.digg_count}}</div>
+            </div>
+            <div class="comment-item-text" catchtap="commentClicked" data-item="{{item}}">{{item.text}}</div>
+          </view>
+        </div>
+      </scroll-view>
+      <view class="edit-container">
+        <view class="edit-area">
+          <input class="comment-input" auto-focus="true" placeholder-class="holder-txt" bindinput='replyInput'
+            bindblur="onBlur" value='{{replyContent}}' maxlength="200" placeholder="{{replyHolder?replyHolder:'说点什么呗...'}}"></input>
+          <view class="send" catchtap="send">发送</view>
+        </view>
+      </view>
     </view>
+
+
   </view>
 </view>
